@@ -1,1 +1,5 @@
-console.log("Hello World");
+const http = require("http");
+const server = http.createServer((req,res)=>{
+    console.log("Arun")
+});
+server.listen(4000);
