@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require("path");
+const rootDir = require("../util/path")
 
 const route = express.Router();
 
@@ -6,15 +8,26 @@ const route = express.Router();
 
   route.get("/add-product",(req,res,next)=>{
   
-    res.send('<form action="/admin/product" method = "POST"><input type ="text" name="title"><input type ="text" name="size"><button type="submit">ADD</button></form>');
+    res.sendFile(path.join(rootDir,"views","admin.html"));
     
    });
 
-   route.post("/product",(req,res,next)=>{
+   route.post("/add-product",(req,res,next)=>{
 
     console.log(req.body);
     
     res.redirect("/");
+    
+    
+   });
+   route.get("/contact-us",(req,res,next)=>{
+  
+    res.sendFile(path.join(rootDir,"views","contact.html"));
+    
+   });
+   route.post("/success",(req,res,next)=>{
+
+    res.send("<h1>File Filled Succesfully!</h1>")
     
     
    });
